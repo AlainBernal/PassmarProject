@@ -1,0 +1,1097 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <!-- base href="http://demo.tecdiary.my/spos/" -->
+    <title>POS | Simple POS</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="http://demo.tecdiary.my/spos/images/icon.png">
+    <script type="text/javascript">if(parent.frames.length>0)top.location='http://demo.tecdiary.my/spos/index.php?module=pos'</script>
+    <link rel="stylesheet" href="~/App_Start/Content/bootstrap.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="~/App_Start/Content/posajax.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="~/App_Start/Content/non-responsive.css" type="text/css">
+    <link rel="stylesheet" href="~/App_Start/Content/print.css" type="text/css" media="print">
+    <script src="~/Scripts/jquery-1.js"></script>
+    <script src="~/Scripts/purl.js"></script>
+    <style>
+        .btn-product {
+            background: #EEE;
+            border: 1px solid #EEE;
+            border-bottom: 0;
+        }
+
+        .btn-con .btn-default {
+            height: 43px;
+        }
+    </style>
+    <style>
+        .ui-keyboard {
+            height: 0 !important;
+            display: none !important;
+        }
+    </style>
+    <script type="text/javascript">
+
+
+$(document).ready(function() {
+
+
+});
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <div class="navbar navbar-static-top navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                    <a class="navbar-brand">
+                        Simple POS
+                    </a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a data-original-title="Language" class="dropdown-toggle tip" data-toggle="dropdown" href="#" data-placement="right" title=""><img src="POS%20_%20Simple%20POS_files/english.png" style="margin-top:-1px" align="middle"></a>
+                        <ul class="dropdown-menu" style="min-width: 60px;" role="menu" aria-labelledby="dLabel">
+                            <li>
+                                <a href="http://demo.tecdiary.my/spos/index.php?module=pos&amp;view=language&amp;lang=english">
+                                    <img src="POS%20_%20Simple%20POS_files/english.png" class="language-img"> &nbsp;&nbsp;
+                                    English
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li><a data-original-title="Home" href="http://demo.tecdiary.my/spos/index.php?module=settings" class="tip" data-placement="right" title=""><i class="glyphicon glyphicon-home"></i></a></li>
+                    <li><a data-original-title="Settings" href="http://demo.tecdiary.my/spos/index.php?module=settings&amp;view=system_setting" class="tip" data-placement="right" title=""><i class="glyphicon glyphicon-cog"></i></a></li>
+                    <li><a data-original-title="Sales" href="http://demo.tecdiary.my/spos/index.php?module=sales" class="tip" data-placement="right" title=""><i class="glyphicon glyphicon-list"></i></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a data-original-title="Hi,&nbsp;User!&nbsp;Logout" href="http://demo.tecdiary.my/spos/index.php?module=auth&amp;view=logout" class="tip" data-placement="left" title=""><i class="glyphicon glyphicon-log-out"></i></a></li>
+                </ul>
+                <a href="http://demo.tecdiary.my/spos/index.php?module=pos&amp;view=today_sale" class="btn btn-success btn-sm pull-right external" style="padding:5px 8px; margin: 5px 0 5px 5px;" data-toggle="modal" data-target="#saleModal">
+                    Today's Sale
+                </a> <a data-toggle="modal" href="http://demo.tecdiary.my/spos/index.php?module=pos&amp;view=opened_bills" data-target="#opModal" class="btn btn-info btn-sm pull-right external" id="ob" style="padding:5px 8px; margin: 5px 5px 5px 5px;">
+                    Opened Bills
+                </a>
+                <a data-original-title="&lt;strong&gt;Liked?&lt;/strong&gt; Let's Purchase&lt;br&gt;&lt;strong&gt;Have Suggestion?&lt;/strong&gt; Please send email to contact@tecdiary.com" href="http://codecanyon.net/item/simple-pos-point-of-sale-made-easy/3947976?ref=tecdiary" class="tip btn btn-default btn-sm pull-right external" style="padding:5px 8px; margin: 5px 5px 5px 5px;" title="" data-html="true" data-placement="bottom"> Buy Now </a>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="hov"><span id="cur-time">Thursday, 23 February 2017, 05:19:51 PM</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div id="wrapper">
+                <div id="content">
+                    <div class="c1">
+                        <div class="pos">
+                            <div id="pos">
+                                <form action="http://demo.tecdiary.my/spos/index.php?module=pos" method="post" accept-charset="utf-8">
+                                    <div style="display:none">
+                                        <input name="csrf_pos" value="a134c894bb9b5aebb3d1d1865159c581" type="hidden">
+                                    </div>                  <div class="well well-sm" id="leftdiv">
+                                        <div id="lefttop">
+                                            <input name="code" id="scancode" class="form-control input-sm" placeholder="Barcode Scanner" style="margin-bottom: 10px;">
+                                        </div>
+                                        <div id="printhead">
+                                            <h2><strong>Simple POS</strong></h2>
+                                            <p>
+                                                My Shop Lot, Shopping Mall,<br>
+                                                Post Code, City
+                                            </p>                      <p>
+                                                Date:
+                                                24/02/2017
+                                            </p>
+                                        </div>
+                                        <div id="print">
+                                            <table class="table table-striped table-condensed table-hover miantable" style="margin:5px 0 0 0;" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                                <thead>
+                                                    <tr class="success">
+                                                        <th style="width: 9%" class="satu">X</th>
+                                                        <th>Product</th>
+                                                        <th style="width: 12%">Qty</th>
+                                                        <th style="width: 24%">Price</th>
+                                                        <th style="width:19px; padding:0;">&nbsp;</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                            <div id="prodiv">
+                                                <div id="protbldiv" class="nano">
+                                                    <div class="content">
+                                                        <table class="table table-striped table-condensed table-hover protable" id="saletbl" style="margin:0;" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                                            <tbody></tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div style="clear:both;"></div>
+                                                </div>
+                                            </div>
+                                            <div style="clear:both;"></div>
+                                            <div id="totaldiv">
+                                                <table id="totaltbl" class="table table-striped table-condensed totals" style="margin-bottom:10px;">
+                                                    <tbody>
+                                                        <tr class="success">
+                                                            <td width="25%">Total Items</td>
+                                                            <td><span id="count">0</span></td>
+                                                            <td width="25%">Total</td>
+                                                            <td class="text_right" colspan="2"><span id="total">0</span></td>
+                                                        </tr>
+                                                        <tr class="success">
+                                                            <td width="25%">Discount                            <a href="#" id="add_discount" style="color:#FFF; font-size:0.80em"><i class="glyphicon glyphicon-pencil"></i></a></td>
+                                                            <td><span id="ds_con">0</span></td>
+                                                            <td width="25%">Tax                            <a href="#" id="add_tax" style="color:#FFF; font-size:0.80em"><i class="glyphicon glyphicon-pencil"></i></a></td>
+                                                            <td class="text_right"><span id="ts_con">0</span></td>
+                                                        </tr>
+                                                        <tr class="success">
+                                                            <td colspan="2">Total Payable</td>
+                                                            <td class="text_right" colspan="2"><span id="total-payable">0</span></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div id="botbuttons" style="text-align:center;">
+                                            <button type="button" class="btn btn-danger" id="cancel" style="width:90px;">
+                                                Cancel
+                                            </button>
+                                            <!--<button type="button" class="btn btn-warning" id="print" onClick="window.print();return false;">
+                                            Print                  </button>  -->
+                                            <button type="button" class="btn btn-info" id="hold" style="width:90px;">
+                                                Hold
+                                            </button>
+                                            <button type="button" class="btn btn-success" id="payment" style="margin-right:0; width:180px;">
+                                                Payment
+                                            </button>
+                                        </div>
+
+                                        <input name="customer" id="customer" value="3" type="hidden">
+                                        <input name="inv_tax" id="tax_val" value="0" type="hidden">
+                                        <input name="inv_discount" id="discount_val" value="0%" type="hidden">
+                                        <input name="rpaidby" id="rpaidby" value="cash" style="display: none;" type="hidden">
+                                        <input name="count" id="total_item" value="" type="hidden">
+                                        <input name="delete_id" id="is_delete" value="" type="hidden">
+                                        <input name="hold_ref" id="hold_ref" value="" type="hidden">
+                                        <input name="paid_val" id="paid_val" value="" type="hidden">
+                                        <input name="cc_no_val" id="cc_no_val" value="" type="hidden">
+                                        <input name="cc_holder_val" id="cc_holder_val" value="" type="hidden">
+                                        <input name="cheque_no_val" id="cheque_no_val" value="" type="hidden">
+                                        <span id="hidesuspend"></span>
+                                        <input id="submit" value="Submit Sale" style="display: none;" type="submit">
+                                    </div>
+                                </form>                  <div id="cp">
+                                    <div id="slider">
+                                        <div style="max-width: 3000px;" class="bx-wrapper">
+                                            <div style="width: 100%; overflow: hidden; position: relative; height: 50px;" class="bx-viewport">
+                                                <div style="width: 9715%; position: relative; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);" class="btn-category">
+                                                    <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="1" id="category-1">Bebidas Calientes</button>
+
+
+
+                                                    <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="2" id="category-2">Tea Time</button>
+
+                                                    <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="3" id="category-3">Dinner &amp; Lunch</button>
+                                                    <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="4" id="category-4">South Indian</button>
+
+                                                    <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="5" id="category-5">Maharashtian Nashta</button>
+                                                    <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="6" id="category-6">June</button>
+
+                                                    <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="7" id="category-7">July</button>
+                                                    <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="8" id="category-8">August</button>
+                                                    <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="9" id="category-9">September</button>
+                                                    <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="10" id="category-10">October</button>
+                                                    <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="11" id="category-11">November</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="12" id="category-12">December</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="13" id="category-13">Services</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="14" id="category-14">fgdf</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="15" id="category-15">Stationry</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="16" id="category-16">Computer</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="17" id="category-17">Computer accessories</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="18" id="category-18">test</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="19" id="category-19">SCRIPTS</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="20" id="category-20">xdfsdf</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="21" id="category-21">HB collection</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="22" id="category-22">Parathas</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="30" id="category-30">Hello</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="23" id="category-23">Tenant</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="24" id="category-24">A. Tenant</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="25" id="category-25">Monthly</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="26" id="category-26">Mcdo</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="27" id="category-27">Mcdonalds</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="28" id="category-28">Komponen Sewa</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="29" id="category-29">Services</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="31" id="category-31">mama</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="32" id="category-32">weffe</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="33" id="category-33">Starter</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="34" id="category-34">Egynyári</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="35" id="category-35">teleision</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="36" id="category-36">123321</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="37" id="category-37">Keys</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="38" id="category-38">Màn hình</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="39" id="category-39">Laundry</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="40" id="category-40">oil</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="41" id="category-41">Lịch bloc</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="42" id="category-42">Sweeten</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="43" id="category-43">Pantalones</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="44" id="category-44">Cosmetics</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="45" id="category-45">Jeans</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="46" id="category-46">Jeans</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="47" id="category-47">Jeans</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="48" id="category-48">Jeans</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="49" id="category-49">website</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="50" id="category-50">تجريبي</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="51" id="category-51">COFFE</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="52" id="category-52">A- Category </button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="53" id="category-53">cigs</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="54" id="category-54">rabiul</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="55" id="category-55">dry</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="56" id="category-56">Pokemon</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="57" id="category-57">محمود</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="58" id="category-58">Gift Cards</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="59" id="category-59">sfsfsdafsaf</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="60" id="category-60">Repair </button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="61" id="category-61">VEG</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="62" id="category-62">Combo Offers</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="63" id="category-63">ice cream</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="64" id="category-64">loto</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="65" id="category-65">kjhkj</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="66" id="category-66">MASAGA</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="67" id="category-67">Bebidas</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="68" id="category-68">AA</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="69" id="category-69">shart</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="70" id="category-70">toy</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="71" id="category-71">Dinner</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="72" id="category-72">asas</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="73" id="category-73">OLI YAMALUB</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="74" id="category-74">OLI MESIN</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="75" id="category-75">Beverages</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="76" id="category-76">مواد غذایی</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="77" id="category-77">Petrol A 92</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="78" id="category-78">Petrol </button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="79" id="category-79">Flour</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="80" id="category-80">xxxx</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="81" id="category-81">kkk</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="82" id="category-82">Drinks</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="83" id="category-83">food</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="84" id="category-84">1453</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="85" id="category-85">drinks</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="86" id="category-86">drinks</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="87" id="category-87">KUZHINA</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="88" id="category-88">bud</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="89" id="category-89">lather shoo</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="90" id="category-90">hhhhh</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="91" id="category-91">Μικρογεύματα</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="92" id="category-92">Udpi Special</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="93" id="category-93">Tea Time</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="94" id="category-94">Dinner &amp; lunch</button>  <button style="float: left; list-style: outside none none; position: relative; width: 113.6px;" type="button" class="btn btn-default" value="95" id="category-95">Sweets</button>
+                                                </div>
+                                            </div><div class="bx-controls bx-has-pager bx-has-controls-direction"><div class="bx-pager bx-default-pager"><div class="bx-pager-item"><a href="" data-slide-index="0" class="bx-pager-link active">1</a></div><div class="bx-pager-item"><a href="" data-slide-index="1" class="bx-pager-link">2</a></div><div class="bx-pager-item"><a href="" data-slide-index="2" class="bx-pager-link">3</a></div><div class="bx-pager-item"><a href="" data-slide-index="3" class="bx-pager-link">4</a></div><div class="bx-pager-item"><a href="" data-slide-index="4" class="bx-pager-link">5</a></div><div class="bx-pager-item"><a href="" data-slide-index="5" class="bx-pager-link">6</a></div><div class="bx-pager-item"><a href="" data-slide-index="6" class="bx-pager-link">7</a></div><div class="bx-pager-item"><a href="" data-slide-index="7" class="bx-pager-link">8</a></div><div class="bx-pager-item"><a href="" data-slide-index="8" class="bx-pager-link">9</a></div><div class="bx-pager-item"><a href="" data-slide-index="9" class="bx-pager-link">10</a></div><div class="bx-pager-item"><a href="" data-slide-index="10" class="bx-pager-link">11</a></div><div class="bx-pager-item"><a href="" data-slide-index="11" class="bx-pager-link">12</a></div><div class="bx-pager-item"><a href="" data-slide-index="12" class="bx-pager-link">13</a></div><div class="bx-pager-item"><a href="" data-slide-index="13" class="bx-pager-link">14</a></div><div class="bx-pager-item"><a href="" data-slide-index="14" class="bx-pager-link">15</a></div><div class="bx-pager-item"><a href="" data-slide-index="15" class="bx-pager-link">16</a></div><div class="bx-pager-item"><a href="" data-slide-index="16" class="bx-pager-link">17</a></div><div class="bx-pager-item"><a href="" data-slide-index="17" class="bx-pager-link">18</a></div><div class="bx-pager-item"><a href="" data-slide-index="18" class="bx-pager-link">19</a></div></div><div class="bx-controls-direction"><a class="bx-prev disabled" href="#">Prev</a><a class="bx-next" href="#">Next</a></div></div>
+                                        </div>
+                                        <div style="clear:both;"></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <div id="ajaxproducts">
+                                        <div class="btn-product clearfix">
+                                            <div id="proajax">
+                                                <div><button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  <button type="button" class="btn btn-prni hov" value="0"></button>  </div><div style="clear:both;"></div>
+                                            </div><div class="btn-con"><button id="previous" type="button" class="btn btn-default" style="z-index:10002;"><i class="glyphicon glyphicon-chevron-left"></i></button>  <button id="next" type="button" class="btn btn-default" style="z-index:10003;"><i class="glyphicon glyphicon-chevron-right"></i></button>  </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="clear:both;"></div>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer">
+        <div class="container">
+            <p class="credit">
+                Copyright ©
+                2017          Simple POS          v
+                3.0          - Page rendered in 0.0150 seconds. <a data-original-title="Help" href="http://tecdiary.net/support/sma-guide/" target="_blank" class="tip" title=""><i class="icon-question-sign"></i></a>
+            </p>
+        </div>
+    </div>
+    <div id="loading" style="display: none;">
+        <div class="blackbg"></div>
+        <div class="loader">
+            <img src="POS%20_%20Simple%20POS_files/loader.gif" alt="">
+        </div>
+    </div>
+    <div class="modal fade" id="saleModal" tabindex="-1" role="dialog" aria-labelledby="saleModalLabel" aria-hidden="true"></div>
+    <div class="modal fade" id="opModal" tabindex="-1" role="dialog" aria-labelledby="opModalLabel" aria-hidden="true"></div>
+
+    <div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-labelledby="payModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove"></i></button>
+                    <h4 class="modal-title" id="payModalLabel">
+                        Payment
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped" style="margin-bottom:0;">
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    Customer                <a href="#" class="btn btn-primary btn-xs showCModal">
+                                        <i class="glyphicon glyphicon-plus-sign"></i>
+                                        Add Customer
+                                    </a>
+                                </td>
+                                <td width="50%">
+                                    <span class="inv_cus_con">
+                                        <select class="form-control pcustomer" style="padding: 2px !important; height: auto !important;">
+                                            <option selected="selected" value="3">Walk-in Client</option>
+                                            <option value="4">joe</option>
+                                            <option value="5">JORRDA</option>
+                                            <option value="6">mmemememe</option>
+                                            <option value="7">Juan</option>
+                                            <option value="8">gnfgsdvsdv</option>
+                                            <option value="9">vghvjhbjh</option>
+                                            <option value="10">James Brown</option>
+                                            <option value="11">ádasd</option>
+                                            <option value="12">Mustafa</option>
+                                            <option value="13">josphat</option>
+                                            <option value="14">Core User</option>
+                                            <option value="15">sachin</option>
+                                            <option value="16">chay hoohollo</option>
+                                            <option value="17">Room 205</option>
+                                            <option value="18">Vikash Singh</option>
+                                            <option value="19">2063735856</option>
+                                            <option value="20">tabel1</option>
+                                            <option value="21">tyytffh</option>
+                                            <option value="22">Ajeesh</option>
+                                            <option value="23">Aynul</option>
+                                            <option value="24">Fred</option>
+                                            <option value="25">RE</option>
+                                            <option value="26">James Brown</option>
+                                            <option value="27">Noman</option>
+                                            <option value="28">mubashar gujjar</option>
+                                            <option value="29">Miraj</option>
+                                            <option value="30">dgsg</option>
+                                            <option value="31">Sarang</option>
+                                            <option value="32">aaaa</option>
+                                            <option value="33">aaaa</option>
+                                            <option value="34">Mario Medrano</option>
+                                            <option value="35">NNNaz</option>
+                                            <option value="36">Faaz</option>
+                                            <option value="37">teste</option>
+                                            <option value="38">Dine In Customer</option>
+                                            <option value="39">dhrthdrthdr</option>
+                                            <option value="40">jose</option>
+                                            <option value="41">36</option>
+                                            <option value="42">TESTEBR</option>
+                                            <option value="43">aaa</option>
+                                            <option value="44">Mcdonald</option>
+                                            <option value="45">Jack D</option>
+                                            <option value="46">Hasan Türkmen</option>
+                                            <option value="47">Table - 1</option>
+                                            <option value="48">Mike</option>
+                                            <option value="49">Josheds</option>
+                                            <option value="50">John</option>
+                                            <option value="51">a</option>
+                                            <option value="52">deneme</option>
+                                            <option value="53">SDAS</option>
+                                            <option value="54">asdfs</option>
+                                            <option value="55">Shinta</option>
+                                            <option value="56">Amr Yehea</option>
+                                            <option value="57">nghi</option>
+                                            <option value="58">daDAd</option>
+                                            <option value="59">rt</option>
+                                            <option value="60">satyaaaa</option>
+                                            <option value="61">sundaresan</option>
+                                            <option value="62">ghn</option>
+                                            <option value="63">bbv</option>
+                                            <option value="64">Test</option>
+                                            <option value="65">Hoang VU</option>
+                                            <option value="66">afsfas</option>
+                                            <option value="67">Ameer Hamza</option>
+                                            <option value="68">gsgdsfg</option>
+                                            <option value="69">ss</option>
+                                            <option value="70">saqib </option>
+                                            <option value="71">Test company</option>
+                                            <option value="72">Mr. Rach</option>
+                                            <option value="73">Minh Seoul</option>
+                                            <option value="74">Minh Seoul</option>
+                                            <option value="75">Nadeem</option>
+                                            <option value="76">Cash Customer</option>
+                                            <option value="77">Naing Naing</option>
+                                            <option value="78">cheng</option>
+                                            <option value="79">Rohit Sharma</option>
+                                            <option value="80">Anuj Tr</option>
+                                            <option value="81">Kunal Chandavari</option>
+                                            <option value="82">test</option>
+                                            <option value="83">Amitabh Tendulkar</option>
+                                            <option value="84">T1</option>
+                                            <option value="85">الطاولة الاولى</option>
+                                            <option value="86">sss</option>
+                                            <option value="87">elos</option>
+                                            <option value="88">nn</option>
+                                            <option value="89">hjhfjhf</option>
+                                            <option value="90">Moumen </option>
+                                            <option value="91">bambang</option>
+                                            <option value="92">Juka</option>
+                                            <option value="93">Junak</option>
+                                            <option value="94">asdf</option>
+                                            <option value="95">Chomchai Leehuasa</option>
+                                            <option value="96">Chomchai Leehuasa</option>
+                                            <option value="97">Chomchai Leehuasa</option>
+                                            <option value="98">Nazmul Huda</option>
+                                            <option value="99">redddddd</option>
+                                            <option value="100">Manuel</option>
+                                            <option value="101">j</option>
+                                            <option value="102">Kishore</option>
+                                            <option value="103">muadz arob</option>
+                                            <option value="104">Rajdeep dey</option>
+                                            <option value="105">Arman</option>
+                                            <option value="106">asd</option>
+                                            <option value="107">agha</option>
+                                            <option value="108">Boo Radley</option>
+                                            <option value="109">a</option>
+                                            <option value="110">ali</option>
+                                            <option value="111">jabir</option>
+                                            <option value="112">HYZX</option>
+                                            <option value="113">dfdf</option>
+                                            <option value="114">i0990i</option>
+                                            <option value="115">Lukas</option>
+                                            <option value="116">fg</option>
+                                            <option value="117">Joe Bloggs</option>
+                                            <option value="118">Cost 1</option>
+                                            <option value="119">Joao</option>
+                                            <option value="120">qerqwrqw</option>
+                                            <option value="121">Shayan</option>
+                                            <option value="122">tester 233</option>
+                                            <option value="123">JOHN SALEM</option>
+                                            <option value="124">Abc</option>
+                                            <option value="125">Masum Mia</option>
+                                            <option value="126">sezgin deeaa</option>
+                                            <option value="127">ahmet</option>
+                                            <option value="128">Zain UL Aabdin</option>
+                                            <option value="129">Amit Barthwal</option>
+                                            <option value="130">Rama</option>
+                                            <option value="131">pruebas</option>
+                                            <option value="132">Masum Mia</option>
+                                            <option value="133">john jherwile allado</option>
+                                            <option value="134">3131161</option>
+                                            <option value="135">eerwerwerwer</option>
+                                            <option value="136">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</option>
+                                            <option value="137">Khan Asim</option>
+                                            <option value="138">daxul</option>
+                                            <option value="139">julio</option>
+                                            <option value="140">Jora Cardan</option>
+                                            <option value="141">muddasir</option>
+                                            <option value="142">coeg anjir</option>
+                                            <option value="143">Galang</option>
+                                            <option value="144">Mohsin Munir Khan</option>
+                                            <option value="145">shubham Shrivastava</option>
+                                            <option value="146">test</option>
+                                            <option value="147">Fred Smith</option>
+                                            <option value="148">e</option>
+                                            <option value="149">بلحه</option>
+                                            <option value="150">test</option>
+                                            <option value="151">Abdul Rasheed</option>
+                                            <option value="152">Arpit Jain</option>
+                                            <option value="153">Adel Youssef</option>
+                                            <option value="154">Room 205</option>
+                                            <option value="155">Eliemar</option>
+                                            <option value="156">test</option>
+                                            <option value="157">Febri</option>
+                                            <option value="158">Tato Mamardashvili</option>
+                                            <option value="159">tes</option>
+                                            <option value="160">peggg</option>
+                                            <option value="161">rtshgrthrt</option>
+                                            <option value="162">elveenets</option>
+                                            <option value="163">Ale</option>
+                                            <option value="164">TTTTest</option>
+                                            <option value="165">smart repair</option>
+                                            <option value="166">m</option>
+                                            <option value="167">Test aj</option>
+                                            <option value="168">elto n</option>
+                                            <option value="169">ss</option>
+                                            <option value="170">umraz</option>
+                                            <option value="171">Fayzal</option>
+                                            <option value="172">teste</option>
+                                            <option value="173">Ricardo lima</option>
+                                            <option value="174">fotis daskalopoulos</option>
+                                            <option value="175">test</option>
+                                            <option value="176">test1 asdasd</option>
+                                            <option value="177">carlos vazquez</option>
+                                            <option value="178">Eugénio FSGF</option>
+                                            <option value="179"> lkj kj lkj </option>
+                                            <option value="180">choo</option>
+                                            <option value="181">reqwer</option>
+                                            <option value="182">Jeoffrey Sumarago</option>
+                                            <option value="183">test</option>
+                                            <option value="184">ggfd</option>
+                                            <option value="185">nayakaraya</option>
+                                            <option value="186">sdfsdf</option>
+                                            <option value="187">Said Lamadya</option>
+                                            <option value="188">CT</option>
+                                            <option value="189">Salah</option>
+                                            <option value="190">aaaa</option>
+                                            <option value="191">Venugopal</option>
+                                            <option value="192">javid</option>
+                                            <option value="193">fdsafdsa</option>
+                                            <option value="194">sadadsad</option>
+                                            <option value="195">123</option>
+                                            <option value="196">fsdfsggghghgfh dffsdf</option>
+                                            <option value="197">sfadsf</option>
+                                            <option value="198">22222</option>
+                                            <option value="199">leitao</option>
+                                            <option value="200">wawaw</option>
+                                            <option value="201">Shahid Khan</option>
+                                            <option value="202">Dim Wit</option>
+                                            <option value="203">daasd</option>
+                                            <option value="204">hjhgjh</option>
+                                            <option value="205">asdasd</option>
+                                            <option value="206">Riyaz</option>
+                                            <option value="207">KSP FOOD DEMO</option>
+                                            <option value="208">asdas</option>
+                                            <option value="209">John Arb</option>
+                                            <option value="210">Test</option>
+                                            <option value="211">bapi</option>
+                                            <option value="212">Dass</option>
+                                            <option value="213">11111</option>
+                                            <option value="214">bfdfh</option>
+                                            <option value="215">Logesh</option>
+                                            <option value="216">onestopcode</option>
+                                            <option value="217">can</option>
+                                            <option value="218">123</option>
+                                            <option value="219">sudhir kumar</option>
+                                            <option value="220">Kano</option>
+                                            <option value="221">aa</option>
+                                            <option value="222">test_Cust</option>
+                                            <option value="223">hfhm</option>
+                                            <option value="224">RAJA SAHIN</option>
+                                            <option value="225">Venance Ed</option>
+                                            <option value="226">MT</option>
+                                            <option value="227">sfasdas</option>
+                                            <option value="228">Vi Quốc</option>
+                                            <option value="229">tester</option>
+                                            <option value="230">X</option>
+                                            <option value="231">Antonio barros</option>
+                                            <option value="232">mhukhkkgu kjgbljb </option>
+                                            <option value="233">Mujtaba</option>
+                                            <option value="234">Inter Asia Energy Ltd</option>
+                                            <option value="235">Haji Zabi</option>
+                                            <option value="236">Lahore Bar</option>
+                                            <option value="237">rrr</option>
+                                            <option value="238">Amir SHaheen</option>
+                                            <option value="239">kashif naz</option>
+                                            <option value="240">joni</option>
+                                            <option value="241">test</option>
+                                            <option value="242">TEST</option>
+                                            <option value="243">Mitesh Agrawal</option>
+                                            <option value="244">Nigger</option>
+                                            <option value="245">sam</option>
+                                            <option value="246">bundit</option>
+                                            <option value="247">hema</option>
+                                            <option value="248">Mohame</option>
+                                            <option value="249">pepe</option>
+                                            <option value="250">a</option>
+                                            <option value="251">shahnur Alam</option>
+                                            <option value="252">roberto</option>
+                                            <option value="253">mohamed12212</option>
+                                            <option value="254">Rishba</option>
+                                            <option value="255">umar</option>
+                                            <option value="256">jaya</option>
+                                            <option value="257">AHMAD</option>
+                                            <option value="258">Español</option>
+                                            <option value="259">Krishna Chaitanya</option>
+                                            <option value="260">rohit arira</option>
+                                            <option value="261">asd</option>
+                                            <option value="262">test</option>
+                                            <option value="263">Heshan</option>
+                                            <option value="264">baba</option>
+                                            <option value="265">test</option>
+                                            <option value="266">will</option>
+                                            <option value="267">2133121312321</option>
+                                            <option value="268">adcsdcsx</option>
+                                            <option value="269">Siva</option>
+                                            <option value="270">4234234</option>
+                                            <option value="271">Guilherme</option>
+                                            <option value="272">ROn</option>
+                                            <option value="273">Aman</option>
+                                            <option value="274">test</option>
+                                            <option value="275">lkljklkm ikl</option>
+                                            <option value="276">pankaj </option>
+                                            <option value="277">abrar ashraf</option>
+                                            <option value="278">kashif</option>
+                                            <option value="279">gggg dsfsdfdf</option>
+                                            <option value="280">ivan fernandes</option>
+                                            <option value="281">tahsin</option>
+                                            <option value="282">fgdhgfjhgkjknlkk</option>
+                                            <option value="283">xvbvdf</option>
+                                        </select>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Total Payable Amount                :</td>
+                                <td><span style="background: #FFFF99; padding: 5px 10px; text-weight: bold; color: #000;"><span id="twt"></span></span></td>
+                            </tr>
+                            <tr>
+                                <td>Total Purchased Items                :</td>
+                                <td><span style="background: #FFFF99; text-weight: bold; padding: 5px 10px; color: #000;"><span id="fcount"></span></span></td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Paid by              :</td>
+                                <td>
+                                    <select name="paid_by" id="paid_by" class="form-control" style="padding: 2px !important; height: auto !important;">
+                                        <option selected="selected" value="cash">
+                                            Cash
+                                        </option>
+                                        <option value="CC">
+                                            Credit Card
+                                        </option>
+                                        <option value="Cheque">
+                                            Cheque
+                                        </option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr class="pcash">
+                                <td>Paid              :</td>
+                                <td><input id="paid-amount" class="form-control" style="padding: 2px !important; height: auto !important;" type="text"></td>
+                            </tr>
+                            <tr class="pcash">
+                                <td>Return Change                  :</td>
+                                <td><span style="background: #FFFF99; padding: 5px 10px; text-weight: bold; color: #000;" id="balance"></span></td>
+                            </tr>
+                            <tr class="pcc" style="display:none;">
+                                <td>Credit Card No                  :</td>
+                                <td><input id="pcc" class="form-control" style="padding: 2px !important; height: auto !important;" type="text"></td>
+                            </tr>
+                            <tr class="pcc" style="display:none;">
+                                <td>Credit Card Holder                  :</td>
+                                <td><input id="pcc_holder" class="form-control" style="padding: 2px !important; height: auto !important;" type="text"></td>
+                            </tr>
+                            <tr class="pcheque" style="display:none;">
+                                <td>Cheque No                  :</td>
+                                <td><input id="cheque_no" class="form-control" style="padding: 2px !important; height: auto !important;" type="text"></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                        Close
+                    </button>
+                    <button class="btn btn-success" id="submit-sale">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="proModal" tabindex="-1" role="dialog" aria-labelledby="proModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove"></i></button>
+                    <h4 class="modal-title" id="proModalLabel">
+                        Payment
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <input id="rwNo" value="" type="hidden">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="oPrice" class="control-label">
+                                    Current Price
+                                </label>
+                                <input class="form-control input-sm" id="oPrice" disabled="disabled" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="nPrice" class="control-label">
+                                    New Price
+                                </label>
+                                <input class="form-control input-sm kbp-input" id="nPrice" onclick="this.select();" placeholder="New Price" type="text">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="oQuantity" class="control-label">
+                                    Current Quantity
+                                </label>
+                                <input class="form-control input-sm" id="oQuantity" disabled="disabled" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="nQuantity" class="control-label">
+                                    New Quantity
+                                </label>
+                                <input class="form-control input-sm kbq-input" id="nQuantity" onclick="this.select();" placeholder="Current Quantity" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                        Close
+                    </button>
+                    <button class="btn btn-success" id="update-row">
+                        Update
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="proModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove"></i></button>
+                    <h4 class="modal-title" id="proModalLabel">
+                        Add Customer
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div id="customerError"></div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label" for="code">
+                                    Name
+                                </label>
+                                <input name="name" class="form-control input-sm" id="cname" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label" for="cemail">
+                                    Email Address
+                                </label>
+                                <input name="email" class="form-control input-sm" id="cemail" type="text">
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label" for="phone">
+                                    Phone
+                                </label>
+                                <input name="phone" class="form-control input-sm" id="cphone" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label" for="cf1">
+                                    Custom Field 1
+                                </label>
+                                <input name="cf1" class="form-control input-sm" id="cf1" type="text">
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label" for="cf2">
+                                    Custom Field 2
+                                </label>
+                                <input name="cf2" class="form-control input-sm" id="cf2" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <input id="show_m" value="" type="hidden">
+                </div>
+                <div class="modal-footer" style="margin-top:0;">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                        Close
+                    </button>
+                    <button class="btn btn-success" id="add-customer">
+                        Add Customer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="susModal" tabindex="-1" role="dialog" aria-labelledby="susModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-primary">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove"></i></button>
+                    <h4 class="modal-title" id="susModalLabel">
+                        Save to Opened Bills
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped" style="margin-bottom:0;">
+                        <tbody>
+                            <tr>
+                                <td width="50%">
+                                    Customer                <a href="#" class="btn btn-primary btn-xs showCModal">
+                                        <i class="glyphicon glyphicon-plus-sign"></i>
+                                        Add Customer
+                                    </a>
+                                </td>
+                                <td width="50%">
+                                    <span class="inv_cus_con">
+                                        <select class="form-control pcustomer" style="padding: 2px !important; height: auto !important;">
+                                            <option selected="selected" value="3">Walk-in Client</option>
+                                            <option value="4">joe</option>
+                                            <option value="5">JORRDA</option>
+                                            <option value="6">mmemememe</option>
+                                            <option value="7">Juan</option>
+                                            <option value="8">gnfgsdvsdv</option>
+                                            <option value="9">vghvjhbjh</option>
+                                            <option value="10">James Brown</option>
+                                            <option value="11">ádasd</option>
+                                            <option value="12">Mustafa</option>
+                                            <option value="13">josphat</option>
+                                            <option value="14">Core User</option>
+                                            <option value="15">sachin</option>
+                                            <option value="16">chay hoohollo</option>
+                                            <option value="17">Room 205</option>
+                                            <option value="18">Vikash Singh</option>
+                                            <option value="19">2063735856</option>
+                                            <option value="20">tabel1</option>
+                                            <option value="21">tyytffh</option>
+                                            <option value="22">Ajeesh</option>
+                                            <option value="23">Aynul</option>
+                                            <option value="24">Fred</option>
+                                            <option value="25">RE</option>
+                                            <option value="26">James Brown</option>
+                                            <option value="27">Noman</option>
+                                            <option value="28">mubashar gujjar</option>
+                                            <option value="29">Miraj</option>
+                                            <option value="30">dgsg</option>
+                                            <option value="31">Sarang</option>
+                                            <option value="32">aaaa</option>
+                                            <option value="33">aaaa</option>
+                                            <option value="34">Mario Medrano</option>
+                                            <option value="35">NNNaz</option>
+                                            <option value="36">Faaz</option>
+                                            <option value="37">teste</option>
+                                            <option value="38">Dine In Customer</option>
+                                            <option value="39">dhrthdrthdr</option>
+                                            <option value="40">jose</option>
+                                            <option value="41">36</option>
+                                            <option value="42">TESTEBR</option>
+                                            <option value="43">aaa</option>
+                                            <option value="44">Mcdonald</option>
+                                            <option value="45">Jack D</option>
+                                            <option value="46">Hasan Türkmen</option>
+                                            <option value="47">Table - 1</option>
+                                            <option value="48">Mike</option>
+                                            <option value="49">Josheds</option>
+                                            <option value="50">John</option>
+                                            <option value="51">a</option>
+                                            <option value="52">deneme</option>
+                                            <option value="53">SDAS</option>
+                                            <option value="54">asdfs</option>
+                                            <option value="55">Shinta</option>
+                                            <option value="56">Amr Yehea</option>
+                                            <option value="57">nghi</option>
+                                            <option value="58">daDAd</option>
+                                            <option value="59">rt</option>
+                                            <option value="60">satyaaaa</option>
+                                            <option value="61">sundaresan</option>
+                                            <option value="62">ghn</option>
+                                            <option value="63">bbv</option>
+                                            <option value="64">Test</option>
+                                            <option value="65">Hoang VU</option>
+                                            <option value="66">afsfas</option>
+                                            <option value="67">Ameer Hamza</option>
+                                            <option value="68">gsgdsfg</option>
+                                            <option value="69">ss</option>
+                                            <option value="70">saqib </option>
+                                            <option value="71">Test company</option>
+                                            <option value="72">Mr. Rach</option>
+                                            <option value="73">Minh Seoul</option>
+                                            <option value="74">Minh Seoul</option>
+                                            <option value="75">Nadeem</option>
+                                            <option value="76">Cash Customer</option>
+                                            <option value="77">Naing Naing</option>
+                                            <option value="78">cheng</option>
+                                            <option value="79">Rohit Sharma</option>
+                                            <option value="80">Anuj Tr</option>
+                                            <option value="81">Kunal Chandavari</option>
+                                            <option value="82">test</option>
+                                            <option value="83">Amitabh Tendulkar</option>
+                                            <option value="84">T1</option>
+                                            <option value="85">الطاولة الاولى</option>
+                                            <option value="86">sss</option>
+                                            <option value="87">elos</option>
+                                            <option value="88">nn</option>
+                                            <option value="89">hjhfjhf</option>
+                                            <option value="90">Moumen </option>
+                                            <option value="91">bambang</option>
+                                            <option value="92">Juka</option>
+                                            <option value="93">Junak</option>
+                                            <option value="94">asdf</option>
+                                            <option value="95">Chomchai Leehuasa</option>
+                                            <option value="96">Chomchai Leehuasa</option>
+                                            <option value="97">Chomchai Leehuasa</option>
+                                            <option value="98">Nazmul Huda</option>
+                                            <option value="99">redddddd</option>
+                                            <option value="100">Manuel</option>
+                                            <option value="101">j</option>
+                                            <option value="102">Kishore</option>
+                                            <option value="103">muadz arob</option>
+                                            <option value="104">Rajdeep dey</option>
+                                            <option value="105">Arman</option>
+                                            <option value="106">asd</option>
+                                            <option value="107">agha</option>
+                                            <option value="108">Boo Radley</option>
+                                            <option value="109">a</option>
+                                            <option value="110">ali</option>
+                                            <option value="111">jabir</option>
+                                            <option value="112">HYZX</option>
+                                            <option value="113">dfdf</option>
+                                            <option value="114">i0990i</option>
+                                            <option value="115">Lukas</option>
+                                            <option value="116">fg</option>
+                                            <option value="117">Joe Bloggs</option>
+                                            <option value="118">Cost 1</option>
+                                            <option value="119">Joao</option>
+                                            <option value="120">qerqwrqw</option>
+                                            <option value="121">Shayan</option>
+                                            <option value="122">tester 233</option>
+                                            <option value="123">JOHN SALEM</option>
+                                            <option value="124">Abc</option>
+                                            <option value="125">Masum Mia</option>
+                                            <option value="126">sezgin deeaa</option>
+                                            <option value="127">ahmet</option>
+                                            <option value="128">Zain UL Aabdin</option>
+                                            <option value="129">Amit Barthwal</option>
+                                            <option value="130">Rama</option>
+                                            <option value="131">pruebas</option>
+                                            <option value="132">Masum Mia</option>
+                                            <option value="133">john jherwile allado</option>
+                                            <option value="134">3131161</option>
+                                            <option value="135">eerwerwerwer</option>
+                                            <option value="136">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</option>
+                                            <option value="137">Khan Asim</option>
+                                            <option value="138">daxul</option>
+                                            <option value="139">julio</option>
+                                            <option value="140">Jora Cardan</option>
+                                            <option value="141">muddasir</option>
+                                            <option value="142">coeg anjir</option>
+                                            <option value="143">Galang</option>
+                                            <option value="144">Mohsin Munir Khan</option>
+                                            <option value="145">shubham Shrivastava</option>
+                                            <option value="146">test</option>
+                                            <option value="147">Fred Smith</option>
+                                            <option value="148">e</option>
+                                            <option value="149">بلحه</option>
+                                            <option value="150">test</option>
+                                            <option value="151">Abdul Rasheed</option>
+                                            <option value="152">Arpit Jain</option>
+                                            <option value="153">Adel Youssef</option>
+                                            <option value="154">Room 205</option>
+                                            <option value="155">Eliemar</option>
+                                            <option value="156">test</option>
+                                            <option value="157">Febri</option>
+                                            <option value="158">Tato Mamardashvili</option>
+                                            <option value="159">tes</option>
+                                            <option value="160">peggg</option>
+                                            <option value="161">rtshgrthrt</option>
+                                            <option value="162">elveenets</option>
+                                            <option value="163">Ale</option>
+                                            <option value="164">TTTTest</option>
+                                            <option value="165">smart repair</option>
+                                            <option value="166">m</option>
+                                            <option value="167">Test aj</option>
+                                            <option value="168">elto n</option>
+                                            <option value="169">ss</option>
+                                            <option value="170">umraz</option>
+                                            <option value="171">Fayzal</option>
+                                            <option value="172">teste</option>
+                                            <option value="173">Ricardo lima</option>
+                                            <option value="174">fotis daskalopoulos</option>
+                                            <option value="175">test</option>
+                                            <option value="176">test1 asdasd</option>
+                                            <option value="177">carlos vazquez</option>
+                                            <option value="178">Eugénio FSGF</option>
+                                            <option value="179"> lkj kj lkj </option>
+                                            <option value="180">choo</option>
+                                            <option value="181">reqwer</option>
+                                            <option value="182">Jeoffrey Sumarago</option>
+                                            <option value="183">test</option>
+                                            <option value="184">ggfd</option>
+                                            <option value="185">nayakaraya</option>
+                                            <option value="186">sdfsdf</option>
+                                            <option value="187">Said Lamadya</option>
+                                            <option value="188">CT</option>
+                                            <option value="189">Salah</option>
+                                            <option value="190">aaaa</option>
+                                            <option value="191">Venugopal</option>
+                                            <option value="192">javid</option>
+                                            <option value="193">fdsafdsa</option>
+                                            <option value="194">sadadsad</option>
+                                            <option value="195">123</option>
+                                            <option value="196">fsdfsggghghgfh dffsdf</option>
+                                            <option value="197">sfadsf</option>
+                                            <option value="198">22222</option>
+                                            <option value="199">leitao</option>
+                                            <option value="200">wawaw</option>
+                                            <option value="201">Shahid Khan</option>
+                                            <option value="202">Dim Wit</option>
+                                            <option value="203">daasd</option>
+                                            <option value="204">hjhgjh</option>
+                                            <option value="205">asdasd</option>
+                                            <option value="206">Riyaz</option>
+                                            <option value="207">KSP FOOD DEMO</option>
+                                            <option value="208">asdas</option>
+                                            <option value="209">John Arb</option>
+                                            <option value="210">Test</option>
+                                            <option value="211">bapi</option>
+                                            <option value="212">Dass</option>
+                                            <option value="213">11111</option>
+                                            <option value="214">bfdfh</option>
+                                            <option value="215">Logesh</option>
+                                            <option value="216">onestopcode</option>
+                                            <option value="217">can</option>
+                                            <option value="218">123</option>
+                                            <option value="219">sudhir kumar</option>
+                                            <option value="220">Kano</option>
+                                            <option value="221">aa</option>
+                                            <option value="222">test_Cust</option>
+                                            <option value="223">hfhm</option>
+                                            <option value="224">RAJA SAHIN</option>
+                                            <option value="225">Venance Ed</option>
+                                            <option value="226">MT</option>
+                                            <option value="227">sfasdas</option>
+                                            <option value="228">Vi Quốc</option>
+                                            <option value="229">tester</option>
+                                            <option value="230">X</option>
+                                            <option value="231">Antonio barros</option>
+                                            <option value="232">mhukhkkgu kjgbljb </option>
+                                            <option value="233">Mujtaba</option>
+                                            <option value="234">Inter Asia Energy Ltd</option>
+                                            <option value="235">Haji Zabi</option>
+                                            <option value="236">Lahore Bar</option>
+                                            <option value="237">rrr</option>
+                                            <option value="238">Amir SHaheen</option>
+                                            <option value="239">kashif naz</option>
+                                            <option value="240">joni</option>
+                                            <option value="241">test</option>
+                                            <option value="242">TEST</option>
+                                            <option value="243">Mitesh Agrawal</option>
+                                            <option value="244">Nigger</option>
+                                            <option value="245">sam</option>
+                                            <option value="246">bundit</option>
+                                            <option value="247">hema</option>
+                                            <option value="248">Mohame</option>
+                                            <option value="249">pepe</option>
+                                            <option value="250">a</option>
+                                            <option value="251">shahnur Alam</option>
+                                            <option value="252">roberto</option>
+                                            <option value="253">mohamed12212</option>
+                                            <option value="254">Rishba</option>
+                                            <option value="255">umar</option>
+                                            <option value="256">jaya</option>
+                                            <option value="257">AHMAD</option>
+                                            <option value="258">Español</option>
+                                            <option value="259">Krishna Chaitanya</option>
+                                            <option value="260">rohit arira</option>
+                                            <option value="261">asd</option>
+                                            <option value="262">test</option>
+                                            <option value="263">Heshan</option>
+                                            <option value="264">baba</option>
+                                            <option value="265">test</option>
+                                            <option value="266">will</option>
+                                            <option value="267">2133121312321</option>
+                                            <option value="268">adcsdcsx</option>
+                                            <option value="269">Siva</option>
+                                            <option value="270">4234234</option>
+                                            <option value="271">Guilherme</option>
+                                            <option value="272">ROn</option>
+                                            <option value="273">Aman</option>
+                                            <option value="274">test</option>
+                                            <option value="275">lkljklkm ikl</option>
+                                            <option value="276">pankaj </option>
+                                            <option value="277">abrar ashraf</option>
+                                            <option value="278">kashif</option>
+                                            <option value="279">gggg dsfsdfdf</option>
+                                            <option value="280">ivan fernandes</option>
+                                            <option value="281">tahsin</option>
+                                            <option value="282">fgdhgfjhgkjknlkk</option>
+                                            <option value="283">xvbvdf</option>
+                                        </select>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr class="pcash">
+                                <td>Hold Bill Ref                  :</td>
+                                <td><input name="hold_v" class="form-control input-sm" id="hold_ref_v" type="text"></td>
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                        Close
+                    </button>
+                    <button class="btn btn-success" id="submit-hold">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.htm"></script>
+    <script type="text/javascript" src="~/Scripts/jquery_002.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootbox.js"></script>
+ <!--
+       <script type="text/javascript">
+var KB = 0;
+var DTIME = 1;
+var count = 1;
+var total = 0;
+var an = 1;
+var rt = 1;
+var ids = new Array();
+var p_page = 0;
+var page = 0;
+var cat_id = 20;
+var sproduct_name;
+var slast;
+var total_cp = 0;
+
+        
+///AQUI HACE FALTA UN PEDASO DE CODIGO DE JAVASCRIPT
+    </script>
+     -->
+</body>
+</html>
