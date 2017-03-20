@@ -1,0 +1,308 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <!-- base href="http://demo.tecdiary.my/spos/" -->
+    <title>Categories | Simple POS</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="http://demo.tecdiary.my/spos/assets/images/favicon.ico">
+    <link rel="stylesheet" href="~/Content/bootstrap.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="~/Content/datatables.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/dash.css" type="text/css">
+    <link rel="stylesheet" href="~/Content/non-responsive.css" type="text/css">
+    <script src="~/Scripts/jquery-1.js"></script>
+    <script type="text/javascript">
+$(document).ready(function() {
+	$('.tip').tooltip();
+	$('.alert').click(function(){ $(this).fadeTo(500, 0).slideUp(500, function(){ $(this).remove(); }); });
+	window.setTimeout(function() { $(".alert").fadeTo(500, 0).slideUp(500, function(){ $(this).remove(); }); }, 8000);
+});
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <div class="navbar navbar-static-top navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                    <a class="navbar-brand">Simple POS</a>
+                </div>
+                <div class="navbar-collapse collapse navbar-inverse-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a data-original-title="Language" class="dropdown-toggle tip" data-toggle="dropdown" href="#" data-placement="right" title=""><img src="Categories%20_%20Simple%20POS_files/english.png" style="margin-top:-1px" align="middle"></a>
+                            <ul class="dropdown-menu" style="min-width: 60px;" role="menu" aria-labelledby="dLabel">
+                                <li>
+                                    <a href="http://demo.tecdiary.my/spos/index.php?module=pos&amp;view=language&amp;lang=english">
+                                        <img src="Categories%20_%20Simple%20POS_files/english.png" class="language-img"> &nbsp;&nbsp;
+                                        English
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li><a data-original-title="Home" href="http://demo.tecdiary.my/spos/index.php?module=settings" class="tip" data-placement="right" title=""><i class="glyphicon glyphicon-home"></i></a></li>
+                        <li><a data-original-title="Settings" href="http://demo.tecdiary.my/spos/index.php?module=settings&amp;view=system_setting" class="tip" data-placement="right" title=""><i class="glyphicon glyphicon-cog"></i></a></li>
+                        <li><a data-original-title="POS&nbsp;Sale" href="http://demo.tecdiary.my/spos/index.php?module=pos" class="tip" data-placement="right" title=""><i class="glyphicon glyphicon-th-large"></i></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, Admin! <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="http://demo.tecdiary.my/spos/index.php?module=auth&amp;view=change_password">Change Password</a></li>
+                                <li><a href="http://demo.tecdiary.my/spos/index.php?module=auth&amp;view=logout">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="pull-right">
+                        <a data-original-title="&lt;strong&gt;Liked?&lt;/strong&gt; Let's Purchase&lt;br&gt;&lt;strong&gt;Have Suggestion?&lt;/strong&gt; Please send email to contact@tecdiary.com" href="http://codecanyon.net/item/simple-pos-point-of-sale-made-easy/3947976?ref=tecdiary" class="tip btn btn-default btn-sm pull-left external" style="padding:5px 8px; margin: 5px 5px 5px 5px;" title="" data-html="true" data-placement="bottom"> Buy Now </a>
+
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown open">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Products          <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=products">
+                                            List Products
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=add">
+                                            Add Product
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=import">
+                                            Import by CSV
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=sheet">
+                                            Print Barcode
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=labels">
+                                            Print Lablels
+                                        </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=categories">
+                                            List Categories
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=add_category">
+                                            Add Category
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Customers          <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=customers">
+                                            List Customers
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=customers&amp;view=add">
+                                            Add Customer
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Sales          <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=sales">
+                                            List Sales
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=sales&amp;view=holded">
+                                            List Opened Bills
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports          <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=reports&amp;view=daily_sales">
+                                            Daily Sales
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=reports&amp;view=monthly_sales">
+                                            Monthly Sales
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=reports">
+                                            Sales Reports
+                                        </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=reports&amp;view=top">
+                                            Top Products
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=reports&amp;view=products">
+                                            Products Reports
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <script>
+             $(document).ready(function() {
+                $('#fileData').dataTable( {
+					"aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                    "aaSorting": [[ 0, "asc" ]],
+                    "iDisplayLength": 10,
+					"oTableTools": {
+						"sSwfPath": "assets/media/swf/copy_csv_xls_pdf.swf",
+						"aButtons": [
+								"csv",
+								"xls",
+								{
+									"sExtends": "pdf",
+									"sPdfOrientation": "landscape",
+									"sPdfMessage": ""
+								},
+								"print"
+						]
+					},
+					"oLanguage": {
+					  "sSearch": "Filter: "
+					},
+					"aoColumns": [
+					  null,
+					  null,
+
+					  { "bSortable": false }
+					]
+                } );
+
+            } );
+
+            </script>
+
+
+            <h3>Categories</h3>
+            <p class="introtext">Please use the table below to navigate or filter the results. You can download the table as csv, excel and pdf.</p>
+
+            <div id="fileData_wrapper" class="dataTables_wrapper form-inline" role="grid">
+                <div class="text-center"><div class="btn-group"><div class="DTTT btn-group"><a id="ToolTables_fileData_0" class="btn btn-primary btn-sm DTTT_button_csv"><span>CSV</span><div style="position: absolute; left: 0px; top: 0px; width: 43px; height: 30px; z-index: 99;"><embed id="ZeroClipboard_TableToolsMovie_1" src="Categories%20_%20Simple%20POS_files/copy_csv_xls_pdf.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" name="ZeroClipboard_TableToolsMovie_1" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=1&amp;width=43&amp;height=30" wmode="transparent" height="30" width="43" align="middle"></div></a><a id="ToolTables_fileData_1" class="btn btn-primary btn-sm DTTT_button_xls"><span>Excel</span><div style="position: absolute; left: 0px; top: 0px; width: 51px; height: 30px; z-index: 99;"><embed id="ZeroClipboard_TableToolsMovie_2" src="Categories%20_%20Simple%20POS_files/copy_csv_xls_pdf.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" name="ZeroClipboard_TableToolsMovie_2" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=2&amp;width=51&amp;height=30" wmode="transparent" height="30" width="51" align="middle"></div></a><a id="ToolTables_fileData_2" class="btn btn-primary btn-sm DTTT_button_pdf"><span>PDF</span><div style="position: absolute; left: 0px; top: 0px; width: 44px; height: 30px; z-index: 99;"><embed id="ZeroClipboard_TableToolsMovie_3" src="Categories%20_%20Simple%20POS_files/copy_csv_xls_pdf.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" name="ZeroClipboard_TableToolsMovie_3" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=3&amp;width=44&amp;height=30" wmode="transparent" height="30" width="44" align="middle"></div></a><a title="View print view" id="ToolTables_fileData_3" class="btn btn-primary btn-sm DTTT_button_print"><span>Print</span></a></div></div></div><div class="clear"></div><div class="col-md-6"><div class="dataTables_length" id="fileData_length"><label>Show <select class="input-sm" aria-controls="fileData" size="1" name="fileData_length"><option selected="selected" value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="-1">All</option></select> entries</label></div></div><div class="col-md-6 text-right"><div id="fileData_filter" class="dataTables_filter"><label>Search <input class="input-sm" aria-controls="fileData" type="text"></label></div></div><table aria-describedby="fileData_info" id="fileData" class="table table-striped table-bordered table-condensed table-hover dataTable" style="margin-bottom:5px;">
+                    <thead>
+                        <tr role="row" class="active"><th aria-label="No.: activate to sort column descending" aria-sort="ascending" colspan="1" rowspan="1" aria-controls="fileData" tabindex="0" role="columnheader" class="sorting_asc" style="width: 44px;">No.</th><th aria-label="Name: activate to sort column ascending" style="width: 836px;" colspan="1" rowspan="1" aria-controls="fileData" tabindex="0" role="columnheader" class="sorting">Name</th><th aria-label="Actions" colspan="1" rowspan="1" role="columnheader" class="sorting_disabled" style="width: 56px;">Actions</th></tr>
+                    </thead>
+
+                    <tbody aria-relevant="all" aria-live="polite" role="alert">
+                        <tr class="odd">
+                            <td class=" sorting_1">1</td>
+                            <td class=" ">Udpi Special</td>
+
+                            <td class=" "><center><div class="btn-group"><a data-original-title="Update Category" href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=edit_category&amp;id=1" class="tip btn btn-warning btn-xs" title=""><i class="glyphicon glyphicon-edit"></i></a> <a data-original-title="&lt;em&gt;delete_category&lt;/em&gt;" href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=delete_category&amp;id=1" onclick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title=""><i class="glyphicon glyphicon-trash"></i></a>
+            </div></center></td>
+            </tr><tr class="even">
+                <td class=" sorting_1">2</td>
+                <td class=" ">Tea Time</td>
+
+                <td class=" "><center><div class="btn-group"><a data-original-title="Update Category" href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=edit_category&amp;id=2" class="tip btn btn-warning btn-xs" title=""><i class="glyphicon glyphicon-edit"></i></a> <a data-original-title="&lt;em&gt;delete_category&lt;/em&gt;" href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=delete_category&amp;id=2" onclick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title=""><i class="glyphicon glyphicon-trash"></i></a>
+        </div></center></td>
+        </tr><tr class="odd">
+            <td class=" sorting_1">3</td>
+            <td class=" ">Dinner &amp; Lunch</td>
+
+            <td class=" "><center><div class="btn-group"><a data-original-title="Update Category" href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=edit_category&amp;id=3" class="tip btn btn-warning btn-xs" title=""><i class="glyphicon glyphicon-edit"></i></a> <a data-original-title="&lt;em&gt;delete_category&lt;/em&gt;" href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=delete_category&amp;id=3" onclick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title=""><i class="glyphicon glyphicon-trash"></i></a>
+    </div></center></td>
+    </tr><tr class="even">
+        <td class=" sorting_1">4</td>
+        <td class=" ">South Indian</td>
+
+        <td class=" "><center><div class="btn-group"><a data-original-title="Update Category" href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=edit_category&amp;id=4" class="tip btn btn-warning btn-xs" title=""><i class="glyphicon glyphicon-edit"></i></a> <a data-original-title="&lt;em&gt;delete_category&lt;/em&gt;" href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=delete_category&amp;id=4" onclick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title=""><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+    </tr><tr class="odd">
+        <td class=" sorting_1">5</td>
+        <td class=" ">Maharashtian Nashta</td>
+
+        <td class=" "><center><div class="btn-group"><a data-original-title="Update Category" href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=edit_category&amp;id=5" class="tip btn btn-warning btn-xs" title=""><i class="glyphicon glyphicon-edit"></i></a> <a data-original-title="&lt;em&gt;delete_category&lt;/em&gt;" href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=delete_category&amp;id=5" onclick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title=""><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+    </tr><tr class="even">
+        <td class=" sorting_1">6</td>
+        <td class=" ">June</td>
+
+        <td class=" "><center><div class="btn-group"><a data-original-title="Update Category" href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=edit_category&amp;id=6" class="tip btn btn-warning btn-xs" title=""><i class="glyphicon glyphicon-edit"></i></a> <a data-original-title="&lt;em&gt;delete_category&lt;/em&gt;" href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=delete_category&amp;id=6" onclick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title=""><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+    </tr><tr class="odd">
+        <td class=" sorting_1">7</td>
+        <td class=" ">July</td>
+
+        <td class=" "><center><div class="btn-group"><a data-original-title="Update Category" href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=edit_category&amp;id=7" class="tip btn btn-warning btn-xs" title=""><i class="glyphicon glyphicon-edit"></i></a> <a data-original-title="&lt;em&gt;delete_category&lt;/em&gt;" href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=delete_category&amp;id=7" onclick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title=""><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+    </tr><tr class="even">
+        <td class=" sorting_1">8</td>
+        <td class=" ">August</td>
+
+        <td class=" "><center><div class="btn-group"><a data-original-title="Update Category" href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=edit_category&amp;id=8" class="tip btn btn-warning btn-xs" title=""><i class="glyphicon glyphicon-edit"></i></a> <a data-original-title="&lt;em&gt;delete_category&lt;/em&gt;" href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=delete_category&amp;id=8" onclick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title=""><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+    </tr><tr class="odd">
+        <td class=" sorting_1">9</td>
+        <td class=" ">September</td>
+
+        <td class=" "><center><div class="btn-group"><a data-original-title="Update Category" href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=edit_category&amp;id=9" class="tip btn btn-warning btn-xs" title=""><i class="glyphicon glyphicon-edit"></i></a> <a data-original-title="&lt;em&gt;delete_category&lt;/em&gt;" href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=delete_category&amp;id=9" onclick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title=""><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+    </tr><tr class="even">
+        <td class=" sorting_1">10</td>
+        <td class=" ">October</td>
+
+        <td class=" "><center><div class="btn-group"><a data-original-title="Update Category" href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=edit_category&amp;id=10" class="tip btn btn-warning btn-xs" title=""><i class="glyphicon glyphicon-edit"></i></a> <a data-original-title="&lt;em&gt;delete_category&lt;/em&gt;" href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=delete_category&amp;id=10" onclick="return confirm('You are going to remove this category. Press OK to proceed and Cancel to Go Back')" class="tip btn btn-danger btn-xs" title=""><i class="glyphicon glyphicon-trash"></i></a></div></center></td>
+    </tr></tbody></table><div class="col-md-6"><div id="fileData_info" class="dataTables_info">Showing 1 to 10 of 95 entries</div></div><div class="col-md-6 text-right"><div class="dataTables_paginate paging_bootstrap pagination"><ul class="pagination pagination-sm"><li class="prev disabled"><a href="#">&lt;&lt;</a></li><li class="prev disabled"><a href="#">&lt;</a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li class="next"><a href="#">&gt;</a></li><li class="next"><a href="#">&gt;&gt;</a></li></ul></div></div><div class="clear"></div></div>
+
+    <p><a href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=add_category" class="btn btn-primary btn-sm">Add New Category</a></p>
+
+    </div>
+    </div>
+    <div id="footer">
+        <div class="container">
+            <p class="credit">
+                Copyright © 2017 Simple POS v3.0 - Page rendered in 0.0100 seconds.
+                <a data-original-title="Help" href="http://tecdiary.net/support/sma-guide/" target="_blank" class="tip" title=""><i class="icon-question-sign"></i></a>
+            </p>
+        </div>
+    </div>
+    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap-prettyfile.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/Scripts/ZeroClipboard.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/Scripts/TableTools.js"></script>
+    <script type="text/javascript" src="~/Scripts/DT_bootstrap.js"></script>
+
+
+</body>
+</html>

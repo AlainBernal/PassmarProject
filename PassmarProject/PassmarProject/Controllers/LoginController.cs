@@ -12,14 +12,14 @@ namespace PassmarProject.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            Usuario usuario = new Usuario()
+            USUARIO usuario = new USUARIO()
             {
-                usu_id = 1,
-                usu_nom = "Alain",
-                usu_mail = "alain@gmail.com",
-                usu_tel = "5563234445",
-                usu_is_rol = "Admon",
-                usu_pass = "1234"
+                USU_ID=1,
+                USU_NOM = "Alain",
+                USU_MAIL = "alain@gmail.com",
+                USU_TEL = "5563234445",
+                USU_ID_ROL = 1,
+                USU_PASS = "1234"
 
             };
             return View(usuario);

@@ -1,0 +1,225 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <!-- base href="http://demo.tecdiary.my/spos/" -->
+    <title>Add New Category | Simple POS</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="http://demo.tecdiary.my/spos/assets/images/favicon.ico">
+    <link rel="stylesheet" href="~/App_Start/Content/bootstrap.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="~/App_Start/Content/datatables.css" type="text/css">
+    <link rel="stylesheet" href="~/App_Start/Content/dash.css" type="text/css">
+    <link rel="stylesheet" href="~/App_Start/Content/non-responsive.css" type="text/css">
+    <script src="~/Scripts/jquery-1.js"></script>
+    <script type="text/javascript">
+$(document).ready(function() {
+	$('.tip').tooltip();
+	$('.alert').click(function(){ $(this).fadeTo(500, 0).slideUp(500, function(){ $(this).remove(); }); });
+	window.setTimeout(function() { $(".alert").fadeTo(500, 0).slideUp(500, function(){ $(this).remove(); }); }, 8000);
+});
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <div class="navbar navbar-static-top navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                    <a class="navbar-brand">Simple POS</a>
+                </div>
+                <div class="navbar-collapse collapse navbar-inverse-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a data-original-title="Language" class="dropdown-toggle tip" data-toggle="dropdown" href="#" data-placement="right" title=""><img src="Add%20New%20Category%20_%20Simple%20POS_files/english.png" style="margin-top:-1px" align="middle"></a>
+                            <ul class="dropdown-menu" style="min-width: 60px;" role="menu" aria-labelledby="dLabel">
+                                <li>
+                                    <a href="http://demo.tecdiary.my/spos/index.php?module=pos&amp;view=language&amp;lang=english">
+                                        <img src="Add%20New%20Category%20_%20Simple%20POS_files/english.png" class="language-img"> &nbsp;&nbsp;
+                                        English
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li><a data-original-title="Home" href="http://demo.tecdiary.my/spos/index.php?module=settings" class="tip" data-placement="right" title=""><i class="glyphicon glyphicon-home"></i></a></li>
+                        <li><a data-original-title="Settings" href="http://demo.tecdiary.my/spos/index.php?module=settings&amp;view=system_setting" class="tip" data-placement="right" title=""><i class="glyphicon glyphicon-cog"></i></a></li>
+                        <li><a data-original-title="POS&nbsp;Sale" href="http://demo.tecdiary.my/spos/index.php?module=pos" class="tip" data-placement="right" title=""><i class="glyphicon glyphicon-th-large"></i></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, Admin! <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="http://demo.tecdiary.my/spos/index.php?module=auth&amp;view=change_password">Change Password</a></li>
+                                <li><a href="http://demo.tecdiary.my/spos/index.php?module=auth&amp;view=logout">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="pull-right">
+                        <a data-original-title="&lt;strong&gt;Liked?&lt;/strong&gt; Let's Purchase&lt;br&gt;&lt;strong&gt;Have Suggestion?&lt;/strong&gt; Please send email to contact@tecdiary.com" href="http://codecanyon.net/item/simple-pos-point-of-sale-made-easy/3947976?ref=tecdiary" class="tip btn btn-default btn-sm pull-left external" style="padding:5px 8px; margin: 5px 5px 5px 5px;" title="" data-html="true" data-placement="bottom"> Buy Now </a>
+
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Products          <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=products">
+                                            List Products
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=add">
+                                            Add Product
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=import">
+                                            Import by CSV
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=sheet">
+                                            Print Barcode
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=labels">
+                                            Print Lablels
+                                        </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=categories">
+                                            List Categories
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=add_category">
+                                            Add Category
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Customers          <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=customers">
+                                            List Customers
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=customers&amp;view=add">
+                                            Add Customer
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Sales          <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=sales">
+                                            List Sales
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=sales&amp;view=holded">
+                                            List Opened Bills
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports          <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=reports&amp;view=daily_sales">
+                                            Daily Sales
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=reports&amp;view=monthly_sales">
+                                            Monthly Sales
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=reports">
+                                            Sales Reports
+                                        </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=reports&amp;view=top">
+                                            Top Products
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://demo.tecdiary.my/spos/index.php?module=reports&amp;view=products">
+                                            Products Reports
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <h3>Add New Category</h3>
+            <p>Please enter the information below.</p>
+
+            <form action="http://demo.tecdiary.my/spos/index.php?module=products&amp;view=add_category" method="post" accept-charset="utf-8">
+                <div style="display:none">
+                    <input name="csrf_pos" value="a134c894bb9b5aebb3d1d1865159c581" type="hidden">
+                </div>    <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name" class="control-label">Name</label>
+                            <input name="name" class="form-control input-sm" id="name" type="text">        <div class="inline-help">Please enter the name of Category</div>
+                        </div>
+                    </div>
+                </div>
+
+                <input name="submit" value="Add New Category" class="btn btn-primary btn-sm" type="submit">
+
+            </form>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="container">
+            <p class="credit">
+                Copyright © 2017 Simple POS v3.0 - Page rendered in 0.0124 seconds.
+                <a data-original-title="Help" href="http://tecdiary.net/support/sma-guide/" target="_blank" class="tip" title=""><i class="icon-question-sign"></i></a>
+            </p>
+        </div>
+    </div>
+    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap-prettyfile.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/Scripts/ZeroClipboard.js"></script>
+    <script type="text/javascript" charset="utf-8" src="~/Scripts/TableTools.js"></script>
+    <script type="text/javascript" src="~/Scripts/DT_bootstrap.js"></script>
+
+
+</body>
+</html>

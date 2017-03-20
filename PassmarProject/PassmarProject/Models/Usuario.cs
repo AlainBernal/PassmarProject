@@ -1,19 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
 namespace PassmarProject.Models
 {
-    public class Usuario
-    {
-        public int usu_id { get; set; }
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
 
-        public String usu_nom { get; set; }
-        public String usu_mail { get; set; }
-        public String usu_tel { get; set; }
-        public String usu_is_rol { get; set; }
-        public String usu_pass { get; set; }
-         
+    [Table("USUARIO")]
+    public partial class USUARIO
+    {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public USUARIO()
+        {
+            VENTA = new HashSet<VENTA>();
+        }
+
+        [Key]
+        public int USU_ID { get; set; }
+
+        [StringLength(25)]
+        public string USU_NOM { get; set; }
+
+        [StringLength(25)]
+        public string USU_MAIL { get; set; }
+
+        [StringLength(13)]
+        public string USU_TEL { get; set; }
+
+        public int? USU_ID_ROL { get; set; }
+
+        [StringLength(12)]
+        public string USU_PASS { get; set; }
+
+        public virtual ROLES ROLES { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VENTA> VENTA { get; set; }
     }
 }
